@@ -348,8 +348,7 @@ class SkillSprint {
     async searchYouTubeCourses(query) {
     try {
         const searchQuery = `${query} tutorial programming course complete`;
-        const response = await fetch(`https://youtube-proxy-serve.onrender.com/api/search?q=${searchTerm}`);
-
+                const response = await fetch(`https://youtube-proxy-serve.onrender.com/api/search?q=${encodeURIComponent(searchQuery)}`)
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
