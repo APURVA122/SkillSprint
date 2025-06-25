@@ -8,7 +8,7 @@ class SkillSprint {
         this.currentFilter = 'youtube';
         
         // YouTube API Configuration - Using your provided API key
-        this.YOUTUBE_API_KEY = 'AIzaSyBM0Z5wbpz3-SQd5QnTtBVbhMAVjoyuEs8';
+      
         this.YOUTUBE_API_BASE = 'https://www.googleapis.com/youtube/v3';
         
         // Sample fallback data for other platforms
