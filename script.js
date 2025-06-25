@@ -8,8 +8,8 @@ class SkillSprint {
         this.currentFilter = 'youtube';
         
         // YouTube API Configuration - Using your provided API key
-            this.YOUTUBE_API_KEY = YOUTUBE_API_KEY;
-        this.YOUTUBE_API_BASE = 'https://www.googleapis.com/youtube/v3';
+          
+    
         
         // Sample fallback data for other platforms
         this.sampleCourses = [
@@ -346,76 +346,43 @@ class SkillSprint {
 
     // API Integration
     async searchYouTubeCourses(query) {
-        try {
-            const searchQuery = `${query} tutorial programming course complete`;
-            const url = `${this.YOUTUBE_API_BASE}/search?` +
-                `part=snippet&type=video&videoDuration=long&` +
-                `q=${encodeURIComponent(searchQuery)}&` +
-                `maxResults=50&order=relevance&` +
-                `key=${this.YOUTUBE_API_KEY}`;
+    try {
+        const searchQuery = `${query} tutorial programming course complete`;
+        const response = await fetch(`http://localhost:5000/api/search?q=${encodeURIComponent(searchQuery)}`);
 
-            const response = await fetch(url);
-            
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            
-            const data = await response.json();
-
-            if (data.error) {
-                console.error('YouTube API Error:', data.error);
-                throw new Error(data.error.message || 'YouTube API error');
-            }
-
-            if (!data.items || data.items.length === 0) {
-                return [];
-            }
-
-            // Get video details for duration
-            const videoIds = data.items.map(item => item.id.videoId).join(',');
-            const detailsUrl = `${this.YOUTUBE_API_BASE}/videos?` +
-                `part=contentDetails,statistics&id=${videoIds}&` +
-                `key=${this.YOUTUBE_API_KEY}`;
-
-            const detailsResponse = await fetch(detailsUrl);
-            const detailsData = await detailsResponse.json();
-
-            const videoDetails = {};
-            if (detailsData.items) {
-                detailsData.items.forEach(item => {
-                    videoDetails[item.id] = item;
-                });
-            }
-
-            return data.items.map(item => {
-                const details = videoDetails[item.id.videoId];
-                const duration = details ? this.parseDuration(details.contentDetails.duration) : 'Unknown';
-                const viewCount = details?.statistics?.viewCount || 0;
-
-                return {
-                    id: item.id.videoId,
-                    title: this.cleanTitle(item.snippet.title),
-                    provider: 'youtube',
-                    duration: duration,
-                    level: this.inferLevel(item.snippet.title + ' ' + item.snippet.description),
-                    description: item.snippet.description.substring(0, 200) + '...',
-                    url: `https://www.youtube.com/watch?v=${item.id.videoId}`,
-                    category: 'programming',
-                    tags: this.extractTags(item.snippet.title + ' ' + item.snippet.description),
-                    rating: 4.5,
-                    students: this.formatNumber(viewCount) + ' views',
-                    thumbnail: item.snippet.thumbnails.medium?.url || item.snippet.thumbnails.default?.url,
-                    publishedAt: item.snippet.publishedAt,
-                    channelTitle: item.snippet.channelTitle
-                };
-            });
-
-        } catch (error) {
-            console.error('Error fetching YouTube courses:', error);
-            this.showNotification('Failed to fetch YouTube courses. Using sample data.', 'warning');
-            return this.searchSampleCourses(query);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
+
+        const data = await response.json();
+
+        if (!Array.isArray(data) || data.length === 0) {
+            return [];
+        }
+
+        return data.map(item => ({
+            id: item.id,
+            title: this.cleanTitle(item.title),
+            provider: 'youtube',
+            duration: this.parseDuration(item.duration),
+            level: this.inferLevel(item.title + ' ' + item.description),
+            description: item.description,
+            url: `https://www.youtube.com/watch?v=${item.id}`,
+            category: 'programming',
+            tags: this.extractTags(item.title + ' ' + item.description),
+            rating: 4.5,
+            students: this.formatNumber(item.viewCount) + ' views',
+            thumbnail: item.thumbnail,
+            publishedAt: item.publishedAt,
+            channelTitle: item.channelTitle
+        }));
+    } catch (error) {
+        console.error('Error fetching YouTube courses:', error);
+        this.showNotification('Failed to fetch YouTube courses. Using sample data.', 'warning');
+        return this.searchSampleCourses(query);
     }
+}
+
 
     searchFreeCodeCampCourses(query) {
         const queryLower = query.toLowerCase();
