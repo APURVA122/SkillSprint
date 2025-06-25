@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSprint - Free Tech Course Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">🚀 SkillSprint</div>
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="themeToggle">🌙 Dark Mode</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Find Free Tech Courses Instantly</h1>
+            <p>Discover thousands of free programming, AI, and tech courses from YouTube and other platforms</p>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-container">
+                <div class="search-box">
+                    <input 
+                        type="text" 
+                        class="search-input" 
+                        id="searchInput" 
+                        placeholder="Search for courses (e.g., JavaScript, Python, React)"
+                    >
+                </div>
+                <select class="filter-select" id="platformFilter">
+                    <option value="youtube">YouTube</option>
+                    <option value="freecodecamp">FreeCodeCamp</option>
+                    <option value="sample">Sample Data</option>
+                </select>
+                <button class="search-btn" id="searchBtn">Search Courses</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalCourses">0</div>
+                    <div class="stat-label">Free Courses</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="bookmarkedCourses">0</div>
+                    <div class="stat-label">Bookmarked</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="completedCourses">0</div>
+                    <div class="stat-label">Completed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="inProgressCourses">0</div>
+                    <div class="stat-label">In Progress</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="sectionTitle">Popular Free Courses</h2>
+                <div class="loading" id="loading" style="display: none;">
+                    <div class="spinner"></div>
+                    <span>Finding courses...</span>
+                </div>
+            </div>
+            <div class="course-grid" id="courseGrid">
+                <!-- Courses will be populated by JavaScript -->
+            </div>
+            <div class="no-results" id="noResults" style="display: none;">
+                <div class="no-results-icon">🔍</div>
+                <h3>No courses found</h3>
+                <p>Try searching with different keywords or select a different platform.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bookmarks Modal -->
+    <div class="modal" id="bookmarksModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>My Bookmarked Courses</h3>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="bookmarks-grid" id="bookmarksGrid">
+                    <!-- Bookmarked courses will appear here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Tracker -->
+    <div class="progress-tracker" id="progressTracker">
+        <button class="tracker-btn" id="showBookmarks">
+            📚 My Courses (<span id="bookmarkCount">0</span>)
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">🚀 SkillSprint</div>
+                <div class="footer-text">
+                    Empowering learners with free, quality tech education
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<script>
