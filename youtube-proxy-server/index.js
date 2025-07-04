@@ -7,7 +7,10 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
-
+// ✅ HEALTH ROUTE for UptimeRobot
+app.get('/health', (req, res) => {
+    res.status(200).send('OK');
+});
 app.get('/api/search', async (req, res) => {
     const query = req.query.q;
 
