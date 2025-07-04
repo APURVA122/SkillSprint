@@ -13,77 +13,156 @@ class SkillSprint {
         
         // Sample fallback data for other platforms
         this.sampleCourses = [
-            {
-                id: 'sample-1',
-                title: 'Complete JavaScript Tutorial - Full Course for Beginners',
-                provider: 'freecodecamp',
-                duration: '8 hours',
-                level: 'Beginner',
-                description: 'Learn JavaScript from scratch with practical examples and projects. This comprehensive course covers variables, functions, objects, arrays, and more.',
-                url: 'https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/',
-                category: 'programming',
-                tags: ['javascript', 'web development', 'programming'],
-                rating: 4.8,
-                students: 125000,
-                thumbnail: 'https://i.ytimg.com/vi/PkZNo7MFNFg/maxresdefault.jpg'
-            },
-            {
-                id: 'sample-2',
-                title: 'Python for Beginners - Full Course',
-                provider: 'freecodecamp',
-                duration: '4.5 hours',
-                level: 'Beginner',
-                description: 'Complete Python tutorial for absolute beginners. Learn Python programming fundamentals including data types, loops, functions, and file handling.',
-                url: 'https://www.freecodecamp.org/learn/scientific-computing-with-python/',
-                category: 'programming',
-                tags: ['python', 'programming', 'beginners'],
-                rating: 4.9,
-                students: 200000,
-                thumbnail: 'https://i.ytimg.com/vi/rfscVS0vtbw/maxresdefault.jpg'
-            },
-            {
-                id: 'sample-3',
-                title: 'React JS Full Course for Beginners',
-                provider: 'freecodecamp',
-                duration: '12 hours',
-                level: 'Intermediate',
-                description: 'Complete React.js tutorial covering components, hooks, state management, and building real projects.',
-                url: 'https://www.freecodecamp.org/learn/front-end-development-libraries/',
-                category: 'web development',
-                tags: ['react', 'javascript', 'frontend'],
-                rating: 4.7,
-                students: 180000,
-                thumbnail: 'https://i.ytimg.com/vi/bMknfKXIFA8/maxresdefault.jpg'
-            },
-            {
-                id: 'sample-4',
-                title: 'Node.js and Express.js Full Course',
-                provider: 'freecodecamp',
-                duration: '8 hours',
-                level: 'Intermediate',
-                description: 'Learn backend development with Node.js and Express.js. Build REST APIs and full-stack applications.',
-                url: 'https://www.freecodecamp.org/learn/back-end-development-and-apis/',
-                category: 'backend',
-                tags: ['nodejs', 'express', 'backend', 'api'],
-                rating: 4.6,
-                students: 95000,
-                thumbnail: 'https://i.ytimg.com/vi/Oe421EPjeBE/maxresdefault.jpg'
-            },
-            {
-                id: 'sample-5',
-                title: 'CSS Grid and Flexbox Complete Course',
-                provider: 'freecodecamp',
-                duration: '3 hours',
-                level: 'Beginner',
-                description: 'Master CSS Grid and Flexbox layout systems. Build responsive layouts with modern CSS techniques.',
-                url: 'https://www.freecodecamp.org/learn/responsive-web-design/',
-                category: 'web design',
-                tags: ['css', 'grid', 'flexbox', 'responsive'],
-                rating: 4.8,
-                students: 110000,
-                thumbnail: 'https://i.ytimg.com/vi/t6CBKf8K_Ac/maxresdefault.jpg'
-            }
-        ];
+    // --- Web Dev / Programming (existing 5) ---
+
+    {
+        id: 'sample-1',
+        title: 'The Complete JavaScript Course 2024: From Zero to Expert!',
+        provider: 'Udemy',
+        duration: '68.5 hours',
+        level: 'Beginner to Advanced',
+        description: 'Master JavaScript with projects, challenges and theory. Includes ES6+, OOP, AJAX, Webpack, and more!',
+        url: 'https://www.udemy.com/course/the-complete-javascript-course/',
+        category: 'programming',
+        tags: ['javascript', 'web development', 'frontend'],
+        rating: 4.7,
+        students: 790000,
+        thumbnail: 'https://img-c.udemycdn.com/course/750x422/851712_fc61_6.jpg'
+    },
+    {
+        id: 'sample-2',
+        title: 'Python for Everybody Specialization',
+        provider: 'Coursera',
+        duration: '4 months (approx. 3 hours/week)',
+        level: 'Beginner',
+        description: 'Learn Python and analyze data from the University of Michigan. Covers variables, loops, web access, and databases.',
+        url: 'https://www.coursera.org/specializations/python',
+        category: 'programming',
+        tags: ['python', 'programming', 'data'],
+        rating: 4.8,
+        students: 2500000,
+        thumbnail: 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2OvHDaG5bMJuRkKCD6PtZK/54e94773cf38ad12fdbac3646fffccee/UofMichigan.png?auto=format%2Ccompress&dpr=1&w=750'
+    },
+    {
+        id: 'sample-3',
+        title: 'Meta Front-End Developer Professional Certificate',
+        provider: 'Coursera',
+        duration: '7 months (approx. 6 hours/week)',
+        level: 'Beginner to Intermediate',
+        description: 'Launch your career as a front-end developer. Learn HTML, CSS, JavaScript, React, and more from Meta (Facebook).',
+        url: 'https://www.coursera.org/professional-certificates/meta-front-end-developer',
+        category: 'web development',
+        tags: ['html', 'css', 'react', 'javascript'],
+        rating: 4.8,
+        students: 350000,
+        thumbnail: 'https://images.ctfassets.net/wp1lcwdav1p1/3YcMJeAz5qgqNR7bKR0q2j/84e49347c5b61595bc4e127cc4ab9dbd/meta.png'
+    },
+    {
+        id: 'sample-4',
+        title: 'Back-End Web Development with Node.js and Express',
+        provider: 'edX',
+        duration: '4 weeks (2-4 hours/week)',
+        level: 'Intermediate',
+        description: 'Learn how to build and deploy scalable back-end applications using Node.js and Express in this edX course by IBM.',
+        url: 'https://www.edx.org/learn/node-js/ibm-back-end-web-development-with-node-js-and-express',
+        category: 'backend',
+        tags: ['nodejs', 'express', 'backend', 'api'],
+        rating: 4.6,
+        students: 70000,
+        thumbnail: 'https://prod-discovery.edx-cdn.org/media/course/image/d7688c95-81d9-4d8b-91fc-9e3946a98657-1600d67fc8c4.png'
+    },
+    {
+        id: 'sample-5',
+        title: 'Responsive Web Design Essentials: HTML5 + CSS3',
+        provider: 'Udemy',
+        duration: '11.5 hours',
+        level: 'Beginner',
+        description: 'Design and build beautiful responsive websites using HTML5 and CSS3 — a project-based approach.',
+        url: 'https://www.udemy.com/course/responsive-web-design-tutorial-html5-css3/',
+        category: 'web design',
+        tags: ['html5', 'css3', 'responsive', 'web design'],
+        rating: 4.7,
+        students: 240000,
+        thumbnail: 'https://img-c.udemycdn.com/course/750x422/705264_caa9_13.jpg'
+    },
+
+    // --- AI / ML ---
+    {
+        id: 'sample-6',
+        title: 'AI For Everyone',
+        provider: 'Coursera',
+        duration: '6 hours',
+        level: 'Beginner',
+        description: 'Andrew Ng explains what AI can and cannot do, how to navigate an AI-transformed industry, and how to work with AI teams.',
+        url: 'https://www.coursera.org/learn/ai-for-everyone',
+        category: 'artificial intelligence',
+        tags: ['ai', 'machine learning', 'strategy'],
+        rating: 4.9,
+        students: 750000,
+        thumbnail: 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2SRP7txniAYe9eUFrT6d2d/c94d58db84c05a74f8453bd71f12df7f/AI_For_Everyone.jpg?auto=format%2Ccompress&dpr=1&w=750'
+    },
+    {
+        id: 'sample-7',
+        title: 'Machine Learning A-Z™: AI, Python & R + ChatGPT Bonus',
+        provider: 'Udemy',
+        duration: '44 hours',
+        level: 'Intermediate',
+        description: 'Hands-On Python & R In Data Science. Covers Regression, Trees, Clustering, NLP, Reinforcement Learning and more.',
+        url: 'https://www.udemy.com/course/machinelearning/',
+        category: 'machine learning',
+        tags: ['machine learning', 'ai', 'python', 'data science'],
+        rating: 4.5,
+        students: 900000,
+        thumbnail: 'https://img-c.udemycdn.com/course/750x422/950390_270f_3.jpg'
+    },
+
+    // --- Data Science ---
+    {
+        id: 'sample-8',
+        title: 'Data Science Specialization',
+        provider: 'Coursera',
+        duration: '11 months (approx. 7 hours/week)',
+        level: 'Intermediate',
+        description: 'From Johns Hopkins University. Learn R, data wrangling, exploratory data analysis, regression, and machine learning.',
+        url: 'https://www.coursera.org/specializations/jhu-data-science',
+        category: 'data science',
+        tags: ['r', 'data science', 'statistics'],
+        rating: 4.6,
+        students: 1200000,
+        thumbnail: 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/3EF0dZ3n8oG70H2egWEokS/f1f987987a7f689de2f113ec91b5315d/Data_Science_Spec_Coursera.jpg?auto=format%2Ccompress&dpr=1&w=750'
+    },
+
+    // --- Cybersecurity ---
+    {
+        id: 'sample-9',
+        title: 'Introduction to Cyber Security',
+        provider: 'edX',
+        duration: '8 weeks (3–5 hours/week)',
+        level: 'Beginner',
+        description: 'From NYU. Learn about cybersecurity threats and how to protect against them using real-world tools.',
+        url: 'https://www.edx.org/course/intro-to-cybersecurity',
+        category: 'cybersecurity',
+        tags: ['cybersecurity', 'network security', 'threats'],
+        rating: 4.7,
+        students: 140000,
+        thumbnail: 'https://prod-discovery.edx-cdn.org/media/course/image/3319d194-b8f3-4a38-9f32-2b1e3a055121-9dc23ab33f7a.png'
+    },
+    {
+        id: 'sample-10',
+        title: 'The Complete Cyber Security Course: Hackers Exposed!',
+        provider: 'Udemy',
+        duration: '12.5 hours',
+        level: 'Beginner to Advanced',
+        description: 'An advanced practical skillset in defeating all online threats — great for beginners and aspiring ethical hackers.',
+        url: 'https://www.udemy.com/course/the-complete-internet-security-privacy-course-volume-1/',
+        category: 'cybersecurity',
+        tags: ['cybersecurity', 'privacy', 'ethical hacking'],
+        rating: 4.5,
+        students: 320000,
+        thumbnail: 'https://img-c.udemycdn.com/course/750x422/857010_8239_2.jpg'
+    }
+];
+
 
         this.freeCodeCampCourses = [
             {
